@@ -18,6 +18,11 @@ module.exports = appInfo => {
   // add your middleware config here
   config.middleware = [];
 
+  // add your user config here
+  const userConfig = {
+    // myAppName: 'egg',
+  };
+
   // 本地使用 非本机 或者 例如：ApiFox、Postman，发送 post 请求 都会触发安防策略。
   config.security = {
     csrf: {
@@ -27,10 +32,11 @@ module.exports = appInfo => {
     domainWhiteList: ['*'], // 配置白名单
   }
 
-  // add your user config here
-  const userConfig = {
-    // myAppName: 'egg',
-  };
+  // egg-view-ejs 将 view 文件夹下的 .html 后缀的文件，识别为 .ejs
+  config.view = {
+    mapping: { ".html": "ejs" }  // 左边写成.html后缀，会自动渲染.html文件
+  }
+
 
   return {
     ...config,

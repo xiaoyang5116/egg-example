@@ -5,8 +5,10 @@ class UserController extends Controller {
     // -----get
     async info() {
         const { ctx } = this
+        const { name, slogen } = await ctx.service.user.user()
         ctx.body = {
-            name: `hello ${ctx.params.id}`,
+            name,
+            slogen
         }
     }
     // -----post
